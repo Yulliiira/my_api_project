@@ -11,7 +11,7 @@ class Fact
 
     public function getFact($number)
     {
-        $query = 'SELECT fact FROM ' . $this->table . ' WHERE number = ? LIMIT 1';
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE number = ? LIMIT 1';
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $number, PDO::PARAM_INT);
         $stmt->execute();
@@ -53,7 +53,7 @@ class Fact
         }
 
     }
-    
+
     public function deleteFact($id){
         $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
         $stmt = $this->conn->prepare($query);
